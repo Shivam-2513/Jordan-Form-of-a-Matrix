@@ -57,7 +57,6 @@ V<V<db>> system_solve(V<V<db>>& A, V<V<db>>& b){
 }
 
 int main(){
-    cout << "1. Main started" << endl;
     // Mat A = {{1, 1, -1, 1, -1},
     //         {0, 1, 0, 0, 0},
     //         {0, 0, 1, 2, -1},
@@ -81,11 +80,7 @@ int main(){
     Mat 𝒞(n);
     Mat u(n); loop(i, 0, n - 1) u[i].emplace_back(0.0);
 
-    cout << "2. Before function call" << endl;
-
     V<pair<db, db>> result = minimalPolynomialFactors(A);
-
-    cout << "3. Function finished" << endl;
 
     int i = 0;
     Mat Jordan(n, V<db>(n, 0));
@@ -139,6 +134,7 @@ int main(){
     }
 
     //output the Jordan form:
+    cout << "Jordan Form: \n";
     loop(i, 0, n - 1){
         loop(j, 0, Jordan[0].size() - 1) cout << Jordan[i][j] << ' ';
         cout << '\n';
