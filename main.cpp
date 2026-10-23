@@ -91,8 +91,8 @@ int main(){
         we need to find the sizes of the boxes in this block;
 
         no. of boxes of size >= k is dk - d(k-1)
-        therefore, no. of boxes of size exactly k, nb[k] := d(k+1) - dk - (dk - d(k-1))
-                                                          = d(k+1) - 2dk + d(k-1)
+        therefore, no. of boxes of size exactly k, nb[k] :=  (dk - d(k-1)) - (d(k+1) - dk) 
+                                                          = -d(k+1) + 2dk - d(k-1)
         we find di till di == di-1 for the first time. once that happens. di == di-1 for all greater i's
         call this i as H
         for all 1 <= bs <= H-1, 
@@ -136,7 +136,7 @@ int main(){
     //output the Jordan form:
     cout << "Jordan Form: \n";
     loop(i, 0, n - 1){
-        loop(j, 0, Jordan[0].size() - 1) cout << Jordan[i][j] << ' ';
+        loop(j, 0, n - 1) cout << Jordan[i][j] << ' ';
         cout << '\n';
     }
 }
