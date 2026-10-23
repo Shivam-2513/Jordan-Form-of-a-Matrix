@@ -77,8 +77,11 @@ int main(){
             {0, 0, 0,  0, 0,  4}
         };
     int n = A.size();
+
+    //--these will be used in the future if i want to generate the chain basis also--
     Mat 𝒞(n);
     Mat u(n); loop(i, 0, n - 1) u[i].emplace_back(0.0);
+    //--
 
     V<pair<db, db>> result = minimalPolynomialFactors(A);
 
