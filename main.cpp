@@ -1,3 +1,5 @@
+// compile: g++ -std=c++17 main.cpp min_poly.cpp matrix_rank.cpp -o main.exe
+// execute: .\main
 #include <bits/stdc++.h>
 #include <iomanip>
 #include "min_poly.h"
@@ -68,13 +70,18 @@ int main(){
     //          {0, 1, 0, 2, 0, 0},
     //          {1, 1, 1, 1, 2, 0},
     //          {0, 0, 0, 0, 1, -1}};
+    // Mat A = {
+    //         {1, 1, 0,  0, 3, -2},
+    //         {0, 1, 1, -1, 1, -1},
+    //         {0, 0, 1,  0, 0,  0},
+    //         {0, 0, 0,  1, 3, -2},
+    //         {0, 0, 0,  0, 4,  1},
+    //         {0, 0, 0,  0, 0,  4}
+    //     };
     Mat A = {
-            {1, 1, 0,  0, 3, -2},
-            {0, 1, 1, -1, 1, -1},
-            {0, 0, 1,  0, 0,  0},
-            {0, 0, 0,  1, 3, -2},
-            {0, 0, 0,  0, 4,  1},
-            {0, 0, 0,  0, 0,  4}
+            {5, -6, -6},
+            {-1, 4, 2},
+            {3, -6, -4}
         };
     int n = A.size();
 
@@ -115,7 +122,9 @@ int main(){
             int rk = matrix_rank(power);
             power = matmul(N, power);
             d.emplace_back(n - rk);
-            if(*(d.end() - 1) == *(d.end() - 2)) break;
+            db last = *(d.end() - 1),
+            second_last = *(d.end() - 2);
+            if(abs(last - second_last) < EPS) break;
         }
         // establishing nb[] vector:
         V<int> nb(d.size() - 1, 0);
